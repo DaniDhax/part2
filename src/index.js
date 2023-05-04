@@ -21,6 +21,12 @@ const courses = {
       exercises: 14,
       id: 3,
     },
+    {
+      name: 'Redux',
+      exercises: 11,
+      id: 4,
+    },
+
   ],
 }
 
