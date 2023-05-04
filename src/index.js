@@ -1,13 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import Note from './components/Note'
-
-// const Note = ({ note }) => {
-//   return (
-//     <li>{note.content}</li>
-//   )
-// }
-
+import App from './App'
 
 const notes = [
   {
@@ -30,19 +23,6 @@ const notes = [
   },
 ]
 
-
-const App = ({ notes }) => {
-  return (
-    <div>
-      <h1>Notes</h1>
-      <ul>
-        {notes.map(note => (
-          <Note key={note.id} note={note} />
-          ))}
-      </ul>
-    </div>
-  )
-}
 
 const root = ReactDOM.createRoot(document.getElementById('root'))
 root.render(
