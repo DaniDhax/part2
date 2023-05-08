@@ -1,23 +1,24 @@
 import React, { useState } from 'react'
 
 const App = () => {
-  const [ persons, setPersons ] = useState([
+  const [persons, setPersons] = useState([
     { name: 'Arto Hellas' }
-  ]) 
-  const [ newName, setNewName ] = useState('')
-
-  const inputValue = ""
+  ])
+  const [newName, setNewName] = useState('')
 
   const addNewName = (event) => {
     event.preventDefault()
     const inputValue = document.getElementById('inputBox').value
-    setNewName (inputValue)
+    // console.log (inputValue)
+    setNewName(inputValue)
+    console.log(inputValue, newName)
     const person = {
-      name: newName
+      name: inputValue
     }
-    
-    console.log (person.name)
-    setPersons ({})
+
+    setPersons(persons.concat(person))
+    setNewName('')
+
   }
 
 
@@ -33,10 +34,8 @@ const App = () => {
         </div>
       </form>
       <h2>Numbers</h2>
-      
 
-
-      <div>debug: {newName}</div>
+      {persons.map(person => <p>{person.name}</p>)}
 
     </div>
   )
