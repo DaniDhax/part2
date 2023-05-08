@@ -6,19 +6,38 @@ const App = () => {
   ]) 
   const [ newName, setNewName ] = useState('')
 
+  const inputValue = ""
+
+  const addNewName = (event) => {
+    event.preventDefault()
+    const inputValue = document.getElementById('inputBox').value
+    setNewName (inputValue)
+    const person = {
+      name: newName
+    }
+    
+    console.log (person.name)
+    setPersons ({})
+  }
+
+
   return (
     <div>
       <h2>Phonebook</h2>
-      <form>
+      <form onSubmit={addNewName}>
         <div>
-          name: <input />
+          name: <input id='inputBox' />
         </div>
         <div>
           <button type="submit">add</button>
         </div>
       </form>
       <h2>Numbers</h2>
-      ...
+      
+
+
+      <div>debug: {newName}</div>
+
     </div>
   )
 }
