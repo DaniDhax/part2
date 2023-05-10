@@ -9,16 +9,13 @@ const App = () => {
   const addNewName = (event) => {
     event.preventDefault()
     const inputValue = document.getElementById('inputBox').value
-    // console.log (inputValue)
     setNewName(inputValue)
-    console.log(inputValue, newName)
     const person = {
       name: inputValue
     }
-
+    
     setPersons(persons.concat(person))
-    setNewName('')
-
+    // inputValue = ''
   }
 
 
@@ -34,9 +31,9 @@ const App = () => {
         </div>
       </form>
       <h2>Numbers</h2>
-
-      {persons.map(person => <p>{person.name}</p>)}
-
+    
+        {persons.map(person => <p key={person.name}>{person.name}</p>)}
+     
     </div>
   )
 }
