@@ -9,13 +9,20 @@ const App = () => {
   const addNewName = (event) => {
     event.preventDefault()
     const inputValue = document.getElementById('inputBox').value
+    
+    for (let i = 0; i < persons.length; i++) {
+      if (persons[i].name === inputValue) {
+        console.log (`${inputValue} is already added to phonebook`)
+        return
+      }
+    }
+
+
     setNewName(inputValue)
     const person = {
       name: inputValue
     }
-    
     setPersons(persons.concat(person))
-    // inputValue = ''
   }
 
 
@@ -31,9 +38,9 @@ const App = () => {
         </div>
       </form>
       <h2>Numbers</h2>
-    
-        {persons.map(person => <p key={person.name}>{person.name}</p>)}
-     
+
+      {persons.map(person => <p key={person.name}>{person.name}</p>)}
+
     </div>
   )
 }
