@@ -1,5 +1,6 @@
 // import { computeHeadingLevel } from '@testing-library/react'
 import React, { useState } from 'react'
+import Filter from './components/Filter'
 
 const App = () => {
   const [persons, setPersons] = useState([
@@ -44,9 +45,9 @@ const App = () => {
   return (
     <div>
       <h2>Phonebook</h2>
-      <div>
-        filter shown with<input id='txtFiltro' onChange={handleFilterChange}/>
-      </div>
+      
+      <Filter handleFilterChange={handleFilterChange} />
+      
       <h2>add a new</h2>
       <form onSubmit={addNewName}>
         <div>name: <input id='txtNombre' /></div>
