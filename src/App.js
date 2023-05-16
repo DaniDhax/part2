@@ -1,6 +1,8 @@
 // import { computeHeadingLevel } from '@testing-library/react'
 import React, { useState } from 'react'
 import Filter from './components/Filter'
+import PersonForm from './components/PersonForm'
+import Persons from './components/Persons'
 
 const App = () => {
   const [persons, setPersons] = useState([
@@ -48,20 +50,13 @@ const App = () => {
       
       <Filter handleFilterChange={handleFilterChange} />
       
-      <h2>add a new</h2>
-      <form onSubmit={addNewName}>
-        <div>name: <input id='txtNombre' /></div>
-        <div>number: <input id='txtTlfno' /></div>
-        <div><button type="submit">add</button></div>
-      </form>
-      <h2>Numbers</h2>
+      <h3>Add a new</h3>
+      
+      <PersonForm addNewName={addNewName}/>
 
-        {
-        document.getElementById('txtFiltro') && document.getElementById('txtFiltro').value !== '' ? 
-        filter.map(person => <p key={person.name}>{person.name} {person.number}</p>)
-        : 
-        persons.map(person => <p key={person.name}>{person.name} {person.number}</p>)
-        }
+      <h3>Numbers</h3>
+
+      <Persons persons={persons} filter={filter}/>
     
     </div>
   )
