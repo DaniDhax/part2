@@ -1,32 +1,25 @@
 import React, { useEffect, useState } from "react"
+import axios from "axios"
 
-const App = ({ paises }) => {
-
-    const [buscarPais, setBuscarPais] = useState("")
+const App = () => {
+    const [paises, setPaises] = useState([])
 
     useEffect(() => {
-        const txtBuscarPais = document.getElementById('txtBuscarPais')
-        txtBuscarPais.addEventListener('change', console.log('cambio'))
-
+        axios
+            .get('https://restcountries.com/v3.1/all')
+            .then(response => {
+                setPaises(response.data)
+            })
     }, [])
-
 
     return (
         <div>
-            <p>
-                find countries:
-                <input
-                    type="text"
-                    id="txtBuscarPais"
-                    value={buscarPais}
-                    onChange={(e) => setBuscarPais(e.target.value)}
-                />
-            </p>
-
-
-            {paises.map(pais => (
-                <div key={pais.name.common}>{pais.name.common}</div>
-            ))}
+            <ol>
+                {paises.map((pais) => {
+                    return (
+                        <li key={pais.name.common}>{pais.name.common}</li>)
+                })}
+            </ol>
         </div>
     )
 }
