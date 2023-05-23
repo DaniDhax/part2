@@ -23,38 +23,41 @@ const App = () => {
 
     return (
         <div>
-        <p>
-          Buscar país: <input type="text" id="txtBuscarPais" onChange={handleChange}></input>
-        </p>
-        {loading ? (
-          <p>Obteniendo datos del servidor...</p>
-        ) : (
-          <>
-            <p>{paisesFiltrados.length}</p>
-            {paisesFiltrados.length > 0 ? (
-              paisesFiltrados.length === 1 ? (
-                <>
-                  <h2>{paisesFiltrados[0].name.common}</h2>
-                  <p>Capital: {paisesFiltrados[0].capital}</p>
-                  <p>Population: {paisesFiltrados[0].population}</p>
-                  <h3>Languages</h3>
-                  
-                </>
-              ) : paisesFiltrados.length < 11 ? (
-                <ol>
-                  {paisesFiltrados.map((pais) => {
-                    return <li key={pais.name.common}>{pais.name.common}</li>;
-                  })}
-                </ol>
-              ) : (
-                <p>Demasiadas respuestas, especifique otro filtro</p>
-              )
+            <p>
+                Buscar país: <input type="text" id="txtBuscarPais" onChange={handleChange}></input>
+            </p>
+            {loading ? (
+                <p>Obteniendo datos del servidor...</p>
             ) : (
-              <p>No se encontraron resultados</p>
+                <>
+                    <p>{paisesFiltrados.length}</p>
+                    {paisesFiltrados.length > 0 ? (
+                        paisesFiltrados.length === 1 ? (
+                            <>
+                                <h2>{paisesFiltrados[0].name.common}</h2>
+                                <p>Capital: {paisesFiltrados[0].capital}</p>
+                                <p>Population: {paisesFiltrados[0].population}</p>
+                                <h3>Languages</h3>
+                                {Object.entries(paisesFiltrados[0].languages).map(([key, value]) => (
+                                    <p key={key}>{value}</p>
+                                ))}
+                                <img src={paisesFiltrados[0].flags.png} alt="Flag" style={{ width: '50%' }} />
+                            </>
+                        ) : paisesFiltrados.length < 11 ? (
+                            <ol>
+                                {paisesFiltrados.map((pais) => {
+                                    return <li key={pais.name.common}>{pais.name.common}</li>;
+                                })}
+                            </ol>
+                        ) : (
+                            <p>Demasiadas respuestas, especifique otro filtro</p>
+                        )
+                    ) : (
+                        <p>No se encontraron resultados</p>
+                    )}
+                </>
             )}
-          </>
-        )}
-      </div>
+        </div>
 
     )
 }
