@@ -32,7 +32,12 @@ const App = () => {
           <>
             <p>{paisesFiltrados.length}</p>
             {paisesFiltrados.length > 0 ? (
-              paisesFiltrados.length < 11 ? (
+              paisesFiltrados.length === 1 ? (
+                <>
+                  <p>Nombre: {paisesFiltrados[0].name.common}</p>
+                  <p>Capital: {paisesFiltrados[0].capital}</p>
+                </>
+              ) : paisesFiltrados.length < 11 ? (
                 <ol>
                   {paisesFiltrados.map((pais) => {
                     return <li key={pais.name.common}>{pais.name.common}</li>;
