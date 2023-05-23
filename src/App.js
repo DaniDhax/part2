@@ -34,8 +34,11 @@ const App = () => {
             {paisesFiltrados.length > 0 ? (
               paisesFiltrados.length === 1 ? (
                 <>
-                  <p>Nombre: {paisesFiltrados[0].name.common}</p>
+                  <h2>{paisesFiltrados[0].name.common}</h2>
                   <p>Capital: {paisesFiltrados[0].capital}</p>
+                  <p>Population: {paisesFiltrados[0].population}</p>
+                  <h3>Languages</h3>
+                  
                 </>
               ) : paisesFiltrados.length < 11 ? (
                 <ol>
