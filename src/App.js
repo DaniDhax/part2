@@ -41,7 +41,7 @@ const App = () => {
                                 {Object.entries(paisesFiltrados[0].languages).map(([key, value]) => (
                                     <p key={key}>{value}</p>
                                 ))}
-                                <img src={paisesFiltrados[0].flags.png} alt="Flag" style={{ width: '50%' }} />
+                                <img src={paisesFiltrados[0].flags.png} alt="Flag" style={{ width: '15vh' }} />
                             </>
                         ) : paisesFiltrados.length < 11 ? (
                             <ol>
