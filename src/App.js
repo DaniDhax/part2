@@ -21,6 +21,13 @@ const App = () => {
         setPaisesFiltrados(filtrados);
     };
 
+    const mostrarDatosPais = (nombrePais) => {
+        const filtrados = paises.filter(pais =>
+            pais.name.common.toLowerCase().includes(nombrePais.toLowerCase())
+        );
+        setPaisesFiltrados(filtrados);
+    }
+
     return (
         <div>
             <p>
@@ -46,7 +53,10 @@ const App = () => {
                         ) : paisesFiltrados.length < 11 ? (
                             <ol>
                                 {paisesFiltrados.map((pais) => {
-                                    return <li key={pais.name.common}>{pais.name.common}</li>;
+                                    return <li
+                                        key={pais.name.common}>{pais.name.common}
+                                        <button id="btnMostrar" onClick={() => mostrarDatosPais(pais.name.common)}>show</button>
+                                    </li>;
                                 })}
                             </ol>
                         ) : (
